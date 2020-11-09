@@ -48,8 +48,8 @@ char* fromDecimal(char res[], int base, int inputNum) {
         inputNum /= base; 
     } 
     res[index] = '\0'; 
-  
-    return strev(res); 
+    strev(res); 
+    return res;
 } 
 
 int main(int argc,char *argv[]){
