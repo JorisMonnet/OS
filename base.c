@@ -16,6 +16,15 @@ char intToChar(int num) {
         return (char)(num - 10 + 'A'); 
 } 
 
+void strev(char *str) {
+    int len = strlen(str); 
+    for (int i = 0; i < len/2; i++) { 
+        char temp = str[i]; 
+        str[i] = str[len-i-1]; 
+        str[len-i-1] = temp; 
+    } 
+} 
+
 int toDecimal(char *str, int base) { 
     int power = 1;  
     int num = 0;  
@@ -40,7 +49,7 @@ char* fromDecimal(char res[], int base, int inputNum) {
     } 
     res[index] = '\0'; 
   
-    return strrev(res); 
+    return strev(res); 
 } 
 
 int main(int argc,char *argv[]){
