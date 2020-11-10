@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h> 
 
+//transform a char to an int via the ascii array
 int charToInt(char c) { 
     if (c >= '0' && c <= '9') 
         return (int)c - '0'; 
@@ -9,6 +10,7 @@ int charToInt(char c) {
         return (int)c - 'A' + 10; 
 }
 
+//transform an int from a char via the ascii array
 char intToChar(int num) { 
     if (num >= 0 && num <= 9) 
         return (char)(num + '0'); 
@@ -25,6 +27,7 @@ void strev(char *str) {
     } 
 } 
 
+//transform a number from any base to the decimal base, return the int result
 int toDecimal(char *str, int base) { 
     int power = 1;  
     int num = 0;  
@@ -40,6 +43,7 @@ int toDecimal(char *str, int base) {
     return num; 
 } 
 
+//transform a decimal number to the string which represents the number in any base 
 char* fromDecimal(char res[], int base, int inputNum) { 
     int index = 0; 
 
@@ -53,15 +57,16 @@ char* fromDecimal(char res[], int base, int inputNum) {
 } 
 
 int main(int argc,char *argv[]){
-    if(argc > 3){
+    if(argc > 3){                               //verification of the number of arguments
         char *A=argv[1];
         int B = atoi(argv[2]);
         int C = atoi(argv[3]);
-        if(A[0]!='-'&&B>1&&C>1&&B<37&&C<37){
+        if(A[0]!='-'&&B>1&&C>1&&B<37&&C<37){    //verification on arguments
             int dec=toDecimal(A,B);
             char result[100];
             fromDecimal(result,C,dec);
             printf("%s en base %d donne %s en base %d\n",A,B,result,C);
+            return 0;
         } else{
             puts("Error invalid arguments");
             return -1;
